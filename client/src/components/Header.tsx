@@ -36,10 +36,16 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <button 
-              onClick={() => scrollToSection("features")}
-              className="hover:text-secondary transition-colors"
+              onClick={() => scrollToSection("use-cases")}
+              className="hover:text-quantum transition-colors"
             >
-              Features
+              Applications
+            </button>
+            <button 
+              onClick={() => scrollToSection("quantum-viz")}
+              className="hover:text-neural transition-colors"
+            >
+              Quantum Demo
             </button>
             <button 
               onClick={() => scrollToSection("models")}
@@ -49,13 +55,13 @@ export default function Header() {
             </button>
             <button 
               onClick={() => scrollToSection("team")}
-              className="hover:text-secondary transition-colors"
+              className="hover:text-accent transition-colors"
             >
               Team
             </button>
             <Button 
               onClick={() => scrollToSection("contact")}
-              className="bg-accent hover:bg-accent/80 px-6 py-2"
+              className="bg-secondary hover:bg-secondary/80 px-6 py-2 palantir-glow"
             >
               Get Started
             </Button>

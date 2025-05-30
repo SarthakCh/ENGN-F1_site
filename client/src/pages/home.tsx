@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Features from "@/components/Features";
+import UseCasesShowcase from "@/components/UseCasesShowcase";
 import ModelsComparison from "@/components/ModelsComparison";
 import RevenueGrowth from "@/components/RevenueGrowth";
 import Team from "@/components/Team";
@@ -10,11 +10,11 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   useEffect(() => {
-    document.title = "ENGN-F1 - India's First Optimization Engine | AI + Quantum Powered";
+    document.title = "ENGN-F1 - World's First Quantum Optimization Engine | Foundational AI Model";
     
     const metaDescription = document.createElement("meta");
     metaDescription.name = "description";
-    metaDescription.content = "ENGN-F1 is India's first optimization engine powered by AI + Quantum algorithms. Revolutionizing last-mile logistics with up to 100% profit margins and real-time optimization.";
+    metaDescription.content = "ENGN-F1 is the world's first optimization engine leveraging quantum computing and foundational AI models. Revolutionary applications across supply chain, life sciences, defense, finance, and more.";
     document.head.appendChild(metaDescription);
 
     return () => {
@@ -23,10 +23,12 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-primary text-white font-inter overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground font-inter overflow-x-hidden">
       <Header />
       <Hero />
-      <Features />
+      <div id="use-cases">
+        <UseCasesShowcase />
+      </div>
       <ModelsComparison />
       <RevenueGrowth />
       <Team />

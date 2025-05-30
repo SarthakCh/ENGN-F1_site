@@ -11,8 +11,8 @@ import { Badge } from "@/components/ui/badge";
 
 const iconMap = {
   Package, Microscope, Plane, Cpu, TrendingUp, Car,
-  Chip, Globe, Shield, Scale, DollarSign
-};
+  Chip: CircuitBoard, Globe, Shield, Scale, DollarSign
+} as const;
 
 export default function UseCasesShowcase() {
   const [selectedUseCase, setSelectedUseCase] = useState<number | null>(null);
