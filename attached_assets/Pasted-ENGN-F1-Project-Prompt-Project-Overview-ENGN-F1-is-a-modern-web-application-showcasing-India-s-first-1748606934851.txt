@@ -1,0 +1,116 @@
+ENGN-F1 Project Prompt
+Project Overview
+ENGN-F1 is a modern web application showcasing India's first Optimization Engine built from first principles. The project is a Next.js-based landing page with advanced features for lead generation, interactive visualizations, and real-time metrics display.
+Technical Requirements
+Core Technologies
+Next.js 14 with TypeScript
+React 18
+Tailwind CSS for styling
+Framer Motion for animations
+Basic authentication for security
+Server-side rendering capabilities
+Key Features
+Modern UI/UX
+Responsive design with mobile-first approach
+Smooth animations and transitions
+Interactive pipeline visualization
+Real-time metrics dashboard
+Lead generation forms
+Milestone roadmap display
+Security Features
+Basic authentication implementation
+IP-based access control
+Secure API endpoints
+Environment variable management
+Access logging system
+Performance Requirements
+Server-side rendering for optimal SEO
+Optimized image loading
+Efficient state management
+Fast page load times
+Smooth animations without performance impact
+Integration Points
+API endpoints for demo data
+Lead form submission handling
+Airtable/Google Sheets integration
+Email notification system
+Analytics integration
+Development Guidelines
+Code Structure
+Apply to route.ts
+implementation
+Coding Standards
+TypeScript for type safety
+ESLint for code quality
+Prettier for code formatting
+Component-based architecture
+Responsive design patterns
+Accessibility compliance
+Development Workflow
+Local development with hot reloading
+Type checking and linting
+Build optimization
+Production deployment
+Performance monitoring
+Deployment Requirements
+Environment Setup
+Node.js 18+ environment
+npm/yarn package manager
+Environment variables configuration
+SSL certificate for HTTPS
+Domain name setup
+Deployment Process
+Build optimization
+Environment variable configuration
+Vercel deployment setup
+DNS configuration
+SSL setup
+Monitoring implementation
+Security Requirements
+Access Control
+IP whitelisting
+Basic authentication
+Secure API endpoints
+Rate limiting
+CORS configuration
+Data Protection
+Secure form submissions
+API key protection
+Environment variable security
+Access logging
+Regular security audits
+Performance Metrics
+Key Performance Indicators
+Page load time < 2 seconds
+First Contentful Paint < 1.5 seconds
+Time to Interactive < 3 seconds
+Lighthouse score > 90
+Mobile responsiveness score > 90
+Maintenance Requirements
+Regular Updates
+Dependency updates
+Security patches
+Performance optimization
+Content updates
+Analytics review
+Monitoring
+Error tracking
+Performance monitoring
+User analytics
+Security monitoring
+Access log analysis
+Documentation Requirements
+Technical Documentation
+API documentation
+Component documentation
+Setup instructions
+Deployment guide
+Security protocols
+User Documentation
+User guides
+FAQ section
+Contact information
+Support documentation
+Feature documentation
+This prompt provides a comprehensive overview of the ENGN-F1 project, covering all aspects from technical requirements to maintenance and documentation needs. It serves as a complete guide for development, deployment, and ongoing maintenance of the project.
+Would you like me to elaborate on any specific aspect of this prompt or provide more details about any particular section?
