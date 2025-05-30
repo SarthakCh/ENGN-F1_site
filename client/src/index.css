@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 222 84% 5%; /* #0F172A */
+  --primary-foreground: 211 100% 99%;
+  --secondary: 188 95% 68%; /* #06B6D4 */
+  --secondary-foreground: 222 84% 5%;
+  --accent: 38 92% 50%; /* #F59E0B */
+  --accent-foreground: 222 84% 5%;
+  --success: 142 76% 36%; /* #10B981 */
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+
+  /* Custom colors */
+  --slate-750: 215 28% 17%; /* #1E293B */
+}
+
+.dark {
+  --background: 222 84% 5%; /* #0F172A */
+  --foreground: 0 0% 98%;
+  --muted: 215 28% 17%; /* #1E293B */
+  --muted-foreground: 215 20% 65%;
+  --popover: 222 84% 5%;
+  --popover-foreground: 0 0% 98%;
+  --card: 222 84% 5%;
+  --card-foreground: 0 0% 98%;
+  --border: 215 28% 17%;
+  --input: 215 28% 17%;
+  --primary: 222 84% 5%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 188 95% 68%;
+  --secondary-foreground: 222 84% 5%;
+  --accent: 38 92% 50%;
+  --accent-foreground: 222 84% 5%;
+  --success: 142 76% 36%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-inter antialiased bg-background text-foreground;
+  }
+
+  /* Custom utility classes */
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .bg-primary {
+    background-color: hsl(var(--primary));
+  }
+
+  .text-primary {
+    color: hsl(var(--primary));
+  }
+
+  .bg-secondary {
+    background-color: hsl(var(--secondary));
+  }
+
+  .text-secondary {
+    color: hsl(var(--secondary));
+  }
+
+  .bg-accent {
+    background-color: hsl(var(--accent));
+  }
+
+  .text-accent {
+    color: hsl(var(--accent));
+  }
+
+  .text-success {
+    color: hsl(var(--success));
+  }
+
+  .bg-slate-750 {
+    background-color: hsl(var(--slate-750));
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .metric-card {
+    background: linear-gradient(135deg, 
+      hsla(var(--secondary), 0.1), 
+      hsla(var(--accent), 0.1)
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid hsla(255, 255%, 255%, 0.1);
+  }
+
+  /* Smooth scrolling for entire page */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      transform: translateY(20px); 
+      opacity: 0; 
+    }
+    to { 
+      transform: translateY(0); 
+      opacity: 1; 
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+}
+
+/* Override default focus styles for better accessibility */
+@layer components {
+  .focus-visible:focus-visible {
+    @apply ring-2 ring-secondary ring-offset-2 ring-offset-primary outline-none;
+  }
+}
