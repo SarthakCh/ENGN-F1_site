@@ -2,25 +2,27 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
+import { Atom, Zap, Brain, Network } from "lucide-react";
+import QuantumVisualization from "./QuantumVisualization";
 
 export default function Hero() {
   const [animatedMetrics, setAnimatedMetrics] = useState({
-    deliveryTime: "< 10 min",
-    optimization: "100%",
-    efficiency: "₹1.5Cr"
+    quantumProcessing: "1000+",
+    neuralNetworks: "150+",
+    optimization: "99%"
   });
 
   const { data: metrics } = useQuery({
     queryKey: ["/api/metrics"],
-    refetchInterval: 5000,
+    refetchInterval: 3000,
   });
 
   useEffect(() => {
     if (metrics) {
       setAnimatedMetrics({
-        deliveryTime: `< ${metrics.deliveryTime} min`,
-        optimization: `${metrics.optimization}%`,
-        efficiency: metrics.revenue
+        quantumProcessing: `${metrics.quantumProcessing || 1000}+`,
+        neuralNetworks: `${metrics.neuralNetworks || 150}+`,
+        optimization: `${metrics.optimization || 95}%`
       });
     }
   }, [metrics]);
@@ -34,104 +36,154 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen flex items-center relative overflow-hidden pt-20">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-slate-750 to-primary"></div>
-      <div className="absolute inset-0 opacity-20">
-        <img 
-          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080" 
-          alt="Modern technology dashboard" 
-          className="w-full h-full object-cover" 
-        />
-      </div>
+      {/* Advanced quantum background */}
+      <div className="absolute inset-0 bg-background"></div>
+      <div className="absolute inset-0 quantum-grid opacity-40"></div>
+      <div className="absolute inset-0 neural-network"></div>
+      
+      {/* Quantum interference patterns */}
+      <div className="absolute inset-0 data-visualization opacity-20"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
-          className="text-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.h1 
-            className="text-6xl md:text-8xl font-bold mb-6"
-            initial={{ scale: 0.5 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <span className="gradient-text">ENGN-F1</span>
-          </motion.h1>
-          
-          <motion.p 
-            className="text-2xl md:text-3xl mb-4 text-slate-300"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            India's First Optimization Engine
-          </motion.p>
-          
-          <motion.p 
-            className="text-lg md:text-xl mb-8 text-slate-400 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-            AI + Quantum Algorithm powered engine delivering multiparametric basis results with robust and scalable algorithms for granular level result validation.
-          </motion.p>
-          
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left side - Content */}
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
+            className="space-y-8"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <Button 
-              onClick={() => scrollToSection("contact")}
-              className="bg-secondary hover:bg-secondary/80 px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all"
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 bg-card/50 border border-secondary/30 rounded-full backdrop-blur-sm"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Request Demo
-            </Button>
-            <Button 
-              variant="outline"
-              onClick={() => scrollToSection("features")}
-              className="border-accent text-accent hover:bg-accent hover:text-white px-8 py-4 text-lg font-semibold transition-all"
+              <div className="w-2 h-2 bg-quantum rounded-full animate-neural-pulse" />
+              <span className="text-quantum text-sm font-semibold tracking-wider">
+                QUANTUM-POWERED INTELLIGENCE
+              </span>
+              <div className="w-2 h-2 bg-neural rounded-full animate-neural-pulse" />
+            </motion.div>
+            
+            <motion.h1 
+              className="text-5xl md:text-7xl font-bold leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              View Documentation
-            </Button>
+              <span className="quantum-gradient-text">ENGN-F1</span><br />
+              <span className="text-foreground">Optimization</span><br />
+              <span className="gradient-text">Engine</span>
+            </motion.h1>
+            
+            <motion.p 
+              className="text-xl text-muted-foreground leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              World's first foundational model leveraging quantum computing and AI to solve 
+              complex optimization problems across critical sectors with unprecedented efficiency.
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+            >
+              <Button 
+                onClick={() => scrollToSection("use-cases")}
+                className="bg-secondary hover:bg-secondary/80 px-8 py-4 text-lg font-semibold palantir-glow group"
+              >
+                <Brain className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                Explore Applications
+              </Button>
+              <Button 
+                variant="outline"
+                onClick={() => scrollToSection("quantum-viz")}
+                className="border-quantum text-quantum hover:bg-quantum hover:text-primary px-8 py-4 text-lg font-semibold group"
+              >
+                <Atom className="w-5 h-5 mr-2 group-hover:animate-quantum-spin" />
+                Quantum Demo
+              </Button>
+            </motion.div>
+
+            {/* Real-time capability metrics */}
+            <motion.div 
+              className="grid grid-cols-3 gap-4 pt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+            >
+              <div className="metric-card p-4 text-center">
+                <div className="flex items-center justify-center mb-2">
+                  <Zap className="w-5 h-5 text-quantum mr-2" />
+                  <span className="text-2xl font-bold text-quantum">{animatedMetrics.quantumProcessing}</span>
+                </div>
+                <div className="text-xs text-muted-foreground">Qubits Processing</div>
+              </div>
+              <div className="metric-card p-4 text-center">
+                <div className="flex items-center justify-center mb-2">
+                  <Brain className="w-5 h-5 text-neural mr-2" />
+                  <span className="text-2xl font-bold text-neural">{animatedMetrics.neuralNetworks}</span>
+                </div>
+                <div className="text-xs text-muted-foreground">Neural Layers</div>
+              </div>
+              <div className="metric-card p-4 text-center">
+                <div className="flex items-center justify-center mb-2">
+                  <Network className="w-5 h-5 text-secondary mr-2" />
+                  <span className="text-2xl font-bold text-secondary">{animatedMetrics.optimization}</span>
+                </div>
+                <div className="text-xs text-muted-foreground">Optimization Rate</div>
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </div>
-      
-      {/* Floating metrics cards */}
-      <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden lg:block"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2 }}
-      >
-        <div className="flex space-x-6">
-          <motion.div 
-            className="metric-card rounded-xl p-4 text-center"
-            whileHover={{ scale: 1.05, y: -5 }}
+          
+          {/* Right side - Quantum Visualization */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="text-2xl font-bold text-success">{animatedMetrics.deliveryTime}</div>
-            <div className="text-sm text-slate-400">Delivery Time</div>
-          </motion.div>
-          <motion.div 
-            className="metric-card rounded-xl p-4 text-center"
-            whileHover={{ scale: 1.05, y: -5 }}
-          >
-            <div className="text-2xl font-bold text-accent">{animatedMetrics.optimization}</div>
-            <div className="text-sm text-slate-400">Optimization Rate</div>
-          </motion.div>
-          <motion.div 
-            className="metric-card rounded-xl p-4 text-center"
-            whileHover={{ scale: 1.05, y: -5 }}
-          >
-            <div className="text-2xl font-bold text-secondary">{animatedMetrics.efficiency}</div>
-            <div className="text-sm text-slate-400">Funding Goal</div>
+            <div id="quantum-viz">
+              <QuantumVisualization />
+            </div>
+            
+            {/* Floating quantum indicators */}
+            <motion.div 
+              className="absolute -top-4 -right-4 w-12 h-12 bg-quantum/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-quantum/30"
+              animate={{ 
+                rotate: [0, 360],
+                scale: [1, 1.1, 1]
+              }}
+              transition={{ 
+                rotate: { duration: 8, repeat: Infinity, ease: "linear" },
+                scale: { duration: 3, repeat: Infinity }
+              }}
+            >
+              <Atom className="w-6 h-6 text-quantum" />
+            </motion.div>
+            
+            <motion.div 
+              className="absolute -bottom-4 -left-4 w-10 h-10 bg-neural/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-neural/30"
+              animate={{ 
+                y: [0, -10, 0],
+                opacity: [0.5, 1, 0.5]
+              }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <Brain className="w-5 h-5 text-neural" />
+            </motion.div>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
