@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 import { Atom, Zap, Brain, Network } from "lucide-react";
-import QuantumVisualization from "./QuantumVisualization";
+
 
 export default function Hero() {
   const [animatedMetrics, setAnimatedMetrics] = useState({
@@ -141,15 +141,72 @@ export default function Hero() {
             </motion.div>
           </motion.div>
           
-          {/* Right side - Quantum Visualization */}
+          {/* Right side - Quantum Algorithm Visualization */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div id="quantum-viz">
-              <QuantumVisualization />
+            <div id="quantum-viz" className="relative w-full h-96 quantum-grid neural-network overflow-hidden rounded-xl border border-border">
+              {/* Quantum field visualization */}
+              <div className="absolute inset-0 data-visualization opacity-30" />
+              
+              {/* Animated quantum nodes */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div
+                  className="grid grid-cols-4 gap-8"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 2 }}
+                >
+                  {Array.from({ length: 16 }).map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="w-8 h-8 rounded-full border-2 border-quantum bg-quantum/20 flex items-center justify-center"
+                      animate={{
+                        scale: [1, 1.5, 1],
+                        rotate: [0, 360],
+                        borderColor: [
+                          "hsl(var(--quantum))",
+                          "hsl(var(--accent))",
+                          "hsl(var(--neural))",
+                          "hsl(var(--quantum))"
+                        ]
+                      }}
+                      transition={{
+                        duration: 4,
+                        delay: i * 0.2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <Atom className="w-4 h-4 text-quantum" />
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+              
+              {/* Real-time metrics overlay */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="flex justify-between items-center text-sm">
+                  <div className="metric-card px-3 py-2 rounded-lg">
+                    <span className="text-quantum">
+                      {animatedMetrics.quantumProcessing} Qubits
+                    </span>
+                  </div>
+                  <div className="metric-card px-3 py-2 rounded-lg">
+                    <span className="text-neural">
+                      {animatedMetrics.neuralNetworks} Neural Layers
+                    </span>
+                  </div>
+                  <div className="metric-card px-3 py-2 rounded-lg">
+                    <span className="text-secondary">
+                      {animatedMetrics.optimization} Optimization
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
             
             {/* Floating quantum indicators */}

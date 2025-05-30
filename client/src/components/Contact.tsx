@@ -230,16 +230,16 @@ export default function Contact() {
                 </ul>
               </div>
               
-              <div className="bg-slate-800/50 rounded-xl p-8 border border-slate-700">
+              <div className="bg-card/90 rounded-xl p-8 border border-border">
                 <h3 className="text-xl font-bold mb-4">Direct Contact</h3>
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <Mail className="text-secondary mr-3 w-5 h-5" />
-                    <span>info@engn-f1.com</span>
+                    <span>sarthak.chakraborty.144@gmail.com</span>
                   </div>
                   <div className="flex items-center">
                     <Phone className="text-secondary mr-3 w-5 h-5" />
-                    <span>+91 7278183606</span>
+                    <span>+91 7003995634</span>
                   </div>
                   <div className="flex items-center">
                     <MapPin className="text-secondary mr-3 w-5 h-5" />
@@ -248,27 +248,24 @@ export default function Contact() {
                 </div>
               </div>
               
-              {/* Logistics optimization CTA */}
+              {/* Pre-seed funding CTA */}
               <motion.div 
                 className="relative rounded-xl overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <img 
-                  src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                  alt="Logistics optimization dashboard" 
-                  className="w-full h-48 object-cover" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h4 className="font-bold mb-2">Ready to Transform?</h4>
-                  <p className="text-sm text-slate-300 mb-4">Join the optimization revolution today</p>
+                <div className="quantum-grid neural-network p-8 border border-secondary/30 rounded-xl palantir-glow">
+                  <h4 className="font-bold mb-3 text-quantum">Pre-Seed Investment Opportunity</h4>
+                  <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                    We're raising pre-seed capital to accelerate MVP development, secure initial LOIs, 
+                    and validate ENGN-F1's impact across sectors. Could we schedule a 45-minute call?
+                  </p>
                   <Button 
-                    className="bg-accent hover:bg-accent/80 text-sm font-semibold"
-                    onClick={() => window.open('tel:+917278183606', '_blank')}
+                    className="bg-secondary hover:bg-secondary/80 text-sm font-semibold w-full palantir-glow"
+                    onClick={() => window.open('mailto:sarthak.chakraborty.144@gmail.com?subject=ENGN-F1 Pre-Seed Investment Discussion&body=Hi Sarthak,%0A%0AI am interested in discussing the pre-seed investment opportunity for ENGN-F1. Could we schedule a 45-minute call to explore this further?%0A%0ABest regards', '_blank')}
                   >
                     <Calendar className="w-4 h-4 mr-2" />
-                    Schedule Call
+                    Schedule Investment Call
                   </Button>
                 </div>
               </motion.div>
