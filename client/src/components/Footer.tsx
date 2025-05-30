@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Atom } from "lucide-react";
-import { SiLinkedin, SiTwitter, SiGithub } from "react-icons/si";
+import { SiLinkedin, SiX, SiGithub } from "react-icons/si";
 
 export default function Footer() {
   const scrollToSection = (sectionId: string) => {
@@ -45,7 +45,7 @@ export default function Footer() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <SiTwitter className="text-white" />
+                <SiX className="text-white" />
               </motion.a>
               <motion.a 
                 href="#" 
