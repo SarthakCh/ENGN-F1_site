@@ -36,4 +36,5 @@ export default defineConfig({
     // Raise size warning threshold
     chunkSizeWarningLimit: 1000,
   },
+  base: "/ENGN-F1_site",
 });
