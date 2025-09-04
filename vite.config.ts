@@ -1,19 +1,22 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "client", "src"),
-      "@shared": path.resolve(import.meta.dirname, "shared"),
-      "@assets": path.resolve(import.meta.dirname, "assets"),
+      "@": resolve(__dirname, "client/src"),
+      "@shared": resolve(__dirname, "shared"),
+      "@assets": resolve(__dirname, "assets"),
     },
   },
-  root: path.resolve(import.meta.dirname, "client"),
+  root: resolve(__dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist"),
+    outDir: resolve(__dirname, "server/dist"),
     emptyOutDir: true,
 
     // manual chunk splitting
@@ -36,5 +39,8 @@ export default defineConfig({
     // Raise size warning threshold
     chunkSizeWarningLimit: 1000,
   },
-  base: "/ENGN-F1_site/",
+  base:
+    process.env.NODE_ENV === "production" && process.env.VITE_GHPAGES === "true"
+      ? "/ENGN-F1_site/"
+      : "/",
 });
