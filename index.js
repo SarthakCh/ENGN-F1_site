@@ -346,7 +346,7 @@ var vite_config_default = defineConfig({
     // Raise size warning threshold
     chunkSizeWarningLimit: 1e3
   },
-  base: "/ENGN-F1_site"
+  base: "/ENGN-F1_site/"
 });
 
 // server/vite.ts
