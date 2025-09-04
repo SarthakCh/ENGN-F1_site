@@ -15,7 +15,7 @@ export default function Header() {
   };
 
   return (
-    <motion.header 
+    <motion.header
       className="fixed top-0 w-full z-50 bg-primary/80 backdrop-blur-md border-b border-slate-700"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -23,8 +23,8 @@ export default function Header() {
     >
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <motion.div 
-            className="flex items-center space-x-2"
+          <motion.div
+            className="flex items-center space-x-4"
             whileHover={{ scale: 1.05 }}
           >
             <div className="w-10 h-10 bg-gradient-to-r from-secondary to-accent rounded-lg flex items-center justify-center">
@@ -34,80 +34,90 @@ export default function Header() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection("use-cases")}
-              className="hover:text-quantum transition-colors"
+          <div className="hidden md:flex items-center space-x-6">
+            <button
+              onClick={() => scrollToSection("applications")}
+              className="px-4 hover:text-quantum transition-colors"
             >
               Applications
             </button>
-            <button 
-              onClick={() => scrollToSection("quantum-viz")}
-              className="hover:text-neural transition-colors"
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="px-4 hover:text-neural transition-colors"
             >
-              Quantum Demo
+              Product Demo
             </button>
-            <button 
-              onClick={() => scrollToSection("models")}
-              className="hover:text-secondary transition-colors"
+            <button
+              onClick={() => scrollToSection("use-cases")}
+              className="px-4 hover:text-secondary transition-colors"
             >
               Models
             </button>
-            <button 
+            <button
               onClick={() => scrollToSection("team")}
-              className="hover:text-accent transition-colors"
+              className="px-4 hover:text-accent transition-colors"
             >
               Team
             </button>
-            <Button 
+            <Button
               onClick={() => scrollToSection("contact")}
               className="bg-secondary hover:bg-secondary/80 px-6 py-2 palantir-glow"
             >
-              Get Started
+              Contact Us
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X className="text-xl" /> : <Menu className="text-xl" />}
+            {mobileMenuOpen ? (
+              <X className="text-xl" />
+            ) : (
+              <Menu className="text-xl" />
+            )}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             className="md:hidden mt-4 pb-4 border-t border-slate-700"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
           >
             <div className="flex flex-col space-y-4 pt-4">
-              <button 
-                onClick={() => scrollToSection("features")}
+              <button
+                onClick={() => scrollToSection("algorithm")}
                 className="text-left hover:text-secondary transition-colors"
               >
                 Features
               </button>
-              <button 
-                onClick={() => scrollToSection("models")}
+              <button
+                onClick={() => scrollToSection("applications")}
+                className="text-left hover:text-secondary transition-colors"
+              >
+                Applications
+              </button>
+              <button
+                onClick={() => scrollToSection("use-cases")}
                 className="text-left hover:text-secondary transition-colors"
               >
                 Models
               </button>
-              <button 
+              <button
                 onClick={() => scrollToSection("team")}
                 className="text-left hover:text-secondary transition-colors"
               >
                 Team
               </button>
-              <Button 
+              <Button
                 onClick={() => scrollToSection("contact")}
                 className="bg-accent hover:bg-accent/80 w-full"
               >
-                Get Started
+                Contact Us
               </Button>
             </div>
           </motion.div>

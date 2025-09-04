@@ -1,6 +1,54 @@
-node_modules
-dist
+# Node modules
+node_modules/
+functions/node_modules/   # for Firebase functions if any
+
+# Build outputs
+dist/ 
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS files
 .DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
+Thumbs.db
+
+# IDE / editor folders
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Temporary / cache
+*.tgz
+.cache/
+.vite/
+*.tsbuildinfo
+
+# Firebase deployment cache
+.firebase/
+firebase-debug.log
+
+# React / Vite
+client/node_modules/
+client/dist/
+client/.vite/
+
+# Drizzle / Zod (nothing specific to ignore, handled by node_modules/build)
+# If using migrations or generated files, you can ignore them:
+drizzle/migrations/*.js
+drizzle/migrations/*.ts
+
+# Optional: ignore OS-specific files
+*.swp
+*.lock

@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { insertLeadSchema } from "@shared/schema";
+import { storage } from "./storage.ts";
+import { insertLeadSchema } from "@shared/schema.js";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -13,9 +13,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ success: true, leadId: lead.id });
     } catch (error) {
       if (error instanceof z.ZodError) {
-        res.status(400).json({ 
-          error: "Validation failed", 
-          details: error.errors 
+        res.status(400).json({
+          error: "Validation failed",
+          details: error.errors,
         });
       } else {
         res.status(500).json({ error: "Internal server error" });
@@ -39,17 +39,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const metrics = {
         deliveryTime: Math.floor(Math.random() * 5) + 5,
         optimization: Math.floor(Math.random() * 20) + 80,
-        efficiency: Math.floor(Math.random() * 100) + 200,
+        efficiency: Math.floor(Math.random() * 100),
         revenue: "₹1.5Cr",
         team: "40%",
         infrastructure: "45%",
         office: "9%",
         orders: 400,
         growth: "250%",
-        quantumProcessing: Math.floor(Math.random() * 500) + 1000,
-        neuralNetworks: Math.floor(Math.random() * 50) + 150,
-        dataPoints: Math.floor(Math.random() * 1000) + 5000
+        quantumProcessing: Math.floor(Math.random() * 100),
+        neuralNetworks: Math.floor(Math.random() * 100) + 1,
+        dataPoints: Math.floor(Math.random() * 1000) + 5000,
       };
+
+      // Disable caching for serverless / Firebase hosting
+      res.set(
+        "Cache-Control",
+        "no-store, no-cache, must-revalidate, proxy-revalidate"
+      );
+      res.set("Pragma", "no-cache");
+      res.set("Expires", "0");
+      res.set("Surrogate-Control", "no-store");
+
       res.json(metrics);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch metrics" });
@@ -63,12 +73,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
         {
           id: 1,
           name: "Supply Chain",
-          description: "End-to-end supply chain optimization with quantum-powered logistics",
+          description:
+            "End-to-end supply chain optimization with quantum-powered logistics",
           icon: "Package",
           category: "Operations",
           impact: "85% cost reduction",
-          quantumAdvantage: "Multi-parameter route optimization across global networks",
-          capabilities: ["Real-time inventory management", "Predictive demand forecasting", "Dynamic pricing optimization"]
+          quantumAdvantage:
+            "Multi-parameter route optimization across global networks",
+          capabilities: [
+            "Real-time inventory management",
+            "Predictive demand forecasting",
+            "Dynamic pricing optimization",
+          ],
         },
         {
           id: 2,
@@ -78,17 +94,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
           category: "Healthcare",
           impact: "70% faster drug discovery",
           quantumAdvantage: "Molecular interaction modeling at quantum scale",
-          capabilities: ["Protein folding prediction", "Drug-target interaction", "Clinical trial optimization"]
+          capabilities: [
+            "Protein folding prediction",
+            "Drug-target interaction",
+            "Clinical trial optimization",
+          ],
         },
         {
           id: 3,
           name: "Drone Systems",
-          description: "Autonomous fleet coordination and airspace optimization",
+          description:
+            "Autonomous fleet coordination and airspace optimization",
           icon: "Drone",
           category: "Aviation",
           impact: "90% efficiency increase",
-          quantumAdvantage: "Real-time multi-drone path planning in complex environments",
-          capabilities: ["Swarm intelligence", "Weather pattern analysis", "Collision avoidance algorithms"]
+          quantumAdvantage:
+            "Real-time multi-drone path planning in complex environments",
+          capabilities: [
+            "Swarm intelligence",
+            "Weather pattern analysis",
+            "Collision avoidance algorithms",
+          ],
         },
         {
           id: 4,
@@ -97,8 +123,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
           icon: "Cpu",
           category: "Computing",
           impact: "1000x computation speed",
-          quantumAdvantage: "Quantum superposition for parallel scenario modeling",
-          capabilities: ["Climate modeling", "Material science simulation", "Financial risk modeling"]
+          quantumAdvantage:
+            "Quantum superposition for parallel scenario modeling",
+          capabilities: [
+            "Climate modeling",
+            "Material science simulation",
+            "Financial risk modeling",
+          ],
         },
         {
           id: 5,
@@ -108,17 +139,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
           category: "Finance",
           impact: "95% risk reduction",
           quantumAdvantage: "Quantum machine learning for market prediction",
-          capabilities: ["Portfolio optimization", "Fraud detection", "Credit risk analysis"]
+          capabilities: [
+            "Portfolio optimization",
+            "Fraud detection",
+            "Credit risk analysis",
+          ],
         },
         {
           id: 6,
           name: "Automotive Sector",
-          description: "Autonomous vehicle decision-making and traffic optimization",
+          description:
+            "Autonomous vehicle decision-making and traffic optimization",
           icon: "Car",
           category: "Transportation",
           impact: "80% accident reduction",
-          quantumAdvantage: "Real-time traffic flow optimization across smart cities",
-          capabilities: ["Autonomous navigation", "Predictive maintenance", "Energy efficiency optimization"]
+          quantumAdvantage:
+            "Real-time traffic flow optimization across smart cities",
+          capabilities: [
+            "Autonomous navigation",
+            "Predictive maintenance",
+            "Energy efficiency optimization",
+          ],
         },
         {
           id: 7,
@@ -128,7 +169,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           category: "Technology",
           impact: "60% design efficiency",
           quantumAdvantage: "Quantum circuit design and optimization",
-          capabilities: ["Circuit layout optimization", "Manufacturing process control", "Quality assurance automation"]
+          capabilities: [
+            "Circuit layout optimization",
+            "Manufacturing process control",
+            "Quality assurance automation",
+          ],
         },
         {
           id: 8,
@@ -137,8 +182,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
           icon: "Globe",
           category: "Commerce",
           impact: "75% profit increase",
-          quantumAdvantage: "Multi-dimensional market analysis with quantum algorithms",
-          capabilities: ["Price prediction", "Trade route optimization", "Risk hedging strategies"]
+          quantumAdvantage:
+            "Multi-dimensional market analysis with quantum algorithms",
+          capabilities: [
+            "Price prediction",
+            "Trade route optimization",
+            "Risk hedging strategies",
+          ],
         },
         {
           id: 9,
@@ -148,7 +198,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           category: "Defense",
           impact: "Classified advantages",
           quantumAdvantage: "Quantum cryptography and secure communications",
-          capabilities: ["Threat assessment", "Resource allocation", "Mission planning optimization"]
+          capabilities: [
+            "Threat assessment",
+            "Resource allocation",
+            "Mission planning optimization",
+          ],
         },
         {
           id: 10,
@@ -157,8 +211,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
           icon: "Scale",
           category: "Legal",
           impact: "50% case resolution speed",
-          quantumAdvantage: "Complex legal precedent analysis and pattern recognition",
-          capabilities: ["Case priority optimization", "Resource allocation", "Outcome prediction modeling"]
+          quantumAdvantage:
+            "Complex legal precedent analysis and pattern recognition",
+          capabilities: [
+            "Case priority optimization",
+            "Resource allocation",
+            "Outcome prediction modeling",
+          ],
         },
         {
           id: 11,
@@ -168,8 +227,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           category: "Business",
           impact: "40% revenue recovery",
           quantumAdvantage: "Multi-dimensional revenue stream analysis",
-          capabilities: ["Leak detection algorithms", "Pricing optimization", "Customer lifetime value prediction"]
-        }
+          capabilities: [
+            "Leak detection algorithms",
+            "Pricing optimization",
+            "Customer lifetime value prediction",
+          ],
+        },
       ];
       res.json(useCases);
     } catch (error) {

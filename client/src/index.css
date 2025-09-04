@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -70,7 +70,7 @@
 
   /* Custom utility classes */
   .font-inter {
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
   }
 
   .bg-primary {
@@ -117,15 +117,58 @@
     background-color: hsl(var(--neural));
   }
 
+  .quantum-button {
+    border: 1px solid hsl(var(--quantum));
+    color: hsl(var(--neural));
+    transition: all 0.3s ease;
+  }
+
+  .quantum-button:hover {
+    box-shadow: 0 0 20px hsl(var(--quantum) / 0.7);
+  }
+
+  .neural-button {
+    border: 1px solid hsl(var(--neural));
+    color: hsl(var(--neural));
+    transition: all 0.3s ease;
+  }
+
+  .neural-button:hover {
+    box-shadow: 0 0 20px hsl(var(--neural) / 0.7);
+  }
+
   .gradient-text {
-    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
+    background: linear-gradient(
+      135deg,
+      hsl(var(--secondary)),
+      hsl(var(--accent))
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .quantum-gradient-text {
-    background: linear-gradient(135deg, hsl(var(--quantum)), hsl(var(--accent)));
+    background: linear-gradient(
+      135deg,
+      hsl(var(--quantum)) 0%,
+      hsl(var(--quantum) / 1.2) 30%,
+      hsl(var(--accent)) 70%,
+      hsl(var(--accent) / 1.3) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .accent-gradient-text {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--accent)) 0%,
+      hsl(var(--accent) / 1.2) 30%,
+      hsl(var(--quantum)) 70%,
+      hsl(var(--quantum) / 1.3) 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -142,8 +185,9 @@
   }
 
   .metric-card {
-    background: linear-gradient(135deg, 
-      hsla(var(--card), 0.8), 
+    background: linear-gradient(
+      135deg,
+      hsla(var(--card), 0.8),
       hsla(var(--secondary), 0.05)
     );
     backdrop-filter: blur(20px);
@@ -151,34 +195,68 @@
   }
 
   .quantum-grid {
-    background-image: 
-      linear-gradient(hsl(var(--grid-line)) 1px, transparent 1px),
+    background-image: linear-gradient(
+        hsl(var(--grid-line)) 1px,
+        transparent 1px
+      ),
       linear-gradient(90deg, hsl(var(--grid-line)) 1px, transparent 1px);
     background-size: 50px 50px;
     animation: grid-pulse 4s ease-in-out infinite;
+
+    /* Fade out top + bottom */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    mask-repeat: no-repeat;
+    mask-size: cover;
   }
 
   .neural-network {
-    background: radial-gradient(circle at 20% 80%, hsla(var(--neural-glow), 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, hsla(var(--quantum-glow), 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, hsla(var(--data-flow), 0.1) 0%, transparent 50%);
+    background: radial-gradient(
+        circle at 20% 80%,
+        hsla(var(--neural-glow), 0.3) 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        hsla(var(--quantum-glow), 0.25) 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        circle at 40% 40%,
+        hsla(var(--data-flow), 0.2) 0%,
+        transparent 70%
+      );
   }
 
   .data-visualization {
-    background: linear-gradient(45deg, 
-      hsla(var(--quantum), 0.1) 0%, 
-      hsla(var(--neural), 0.1) 25%, 
+    background: linear-gradient(
+      45deg,
+      hsla(var(--quantum), 0.1) 0%,
+      hsla(var(--neural), 0.1) 25%,
       hsla(var(--accent), 0.1) 50%,
       hsla(var(--secondary), 0.1) 75%,
       hsla(var(--quantum), 0.1) 100%
     );
     background-size: 400% 400%;
-    animation: gradient-flow 8s ease infinite;
+    animation: gradient-flow 8s ease infinite; /* Restored animation */
   }
 
   .palantir-glow {
-    box-shadow: 
-      0 0 20px hsla(var(--secondary), 0.3),
+    box-shadow: 0 0 20px hsla(var(--secondary), 0.3),
       0 0 40px hsla(var(--accent), 0.2),
       inset 0 0 20px hsla(var(--quantum), 0.1);
   }
@@ -190,44 +268,66 @@
 
   /* Custom animations */
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes slideUp {
-    from { 
-      transform: translateY(20px); 
-      opacity: 0; 
+    from {
+      transform: translateY(20px);
+      opacity: 0;
     }
-    to { 
-      transform: translateY(0); 
-      opacity: 1; 
+    to {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 
   @keyframes grid-pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.6;
+    }
   }
 
   @keyframes gradient-flow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 
   @keyframes quantum-spin {
-    0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.1); }
-    100% { transform: rotate(360deg) scale(1); }
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
   }
 
   @keyframes neural-pulse {
-    0%, 100% { 
+    0%,
+    100% {
       box-shadow: 0 0 20px hsla(var(--neural), 0.5);
       transform: scale(1);
     }
-    50% { 
+    50% {
       box-shadow: 0 0 40px hsla(var(--neural), 0.8);
       transform: scale(1.05);
     }
@@ -255,4 +355,19 @@
   .focus-visible:focus-visible {
     @apply ring-2 ring-secondary ring-offset-2 ring-offset-primary outline-none;
   }
+}
+
+/* Override react-phone-number-input input */
+.PhoneInputInput {
+  @apply bg-slate-700 text-white rounded-md px-3 py-2 w-full placeholder-slate-400;
+}
+
+/* Flag dropdown container */
+.PhoneInputCountrySelect {
+  @apply bg-slate-800 text-white border border-slate-600 rounded-md shadow-lg;
+}
+
+/* Dropdown option styles */
+.PhoneInputCountrySelect option {
+  @apply bg-slate-800 text-white hover:bg-slate-700;
 }
